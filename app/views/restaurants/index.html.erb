@@ -1,0 +1,26 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1525610553991-2bede1a236e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=60)">
+  <div class="container">
+    <h1>All restaurants</h1>
+  </div>
+</div>
+<div class="container">
+  <div class="list mb-4">
+    <% @restaurants.each do |restaurant| %>
+      <div class="my-3 card-restaurant">
+        <%= image_tag "https://source.unsplash.com/1600x900/?restaurant,#{restaurant.category}", alt: "image", height: 200, class: "img" %>
+        <div class="ml-3">
+          <h2> <%= link_to "#{restaurant.name}", restaurant_path(restaurant), class: "restaurant_name" %> </h2>
+          <p> 🌎 <%= restaurant.address %> </p>
+          <p> 🍴 <%= restaurant.category %> </p>
+            <%= restaurant.phone_number %>
+            <%= link_to new_restaurant_review_path(restaurant), title: "Edit restaurant", class: "edit" do %>
+              <p>📝</p>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "➕ New restaurant", new_restaurant_path, class: "button" %>
+</div>
+
